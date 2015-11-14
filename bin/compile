@@ -6,18 +6,20 @@ indent() {
 
 echo "-----> Install ffmpeg"
 BUILD_DIR=$1
-VENDOR_DIR="vendor"
+VENDOR_DIR="FFMPEG"
+CONVERT_DIR="TMP"
 DOWNLOAD_URL="http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.latest.tar.gz"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
 cd $BUILD_DIR
 mkdir -p $VENDOR_DIR
+mkdir -p $CONVERT_DIR
 cd $VENDOR_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 
 echo "exporting PATH and LIBRARY_PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/ffmpeg.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:$HOME/vendor/ffmpeg/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/ffmpeg/lib"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:$HOME/vendor/"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/vendor/"' >> $PROFILE_PATH
