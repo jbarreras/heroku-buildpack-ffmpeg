@@ -8,22 +8,18 @@ Usage
 -----
 To use this buildpack, you should prepare .buildpacks file that contains this buildpack url and your real buildpack url.  
 
-    $ ls
-    .buildpacks
-    ...
+    /.buildpacks
     
-    $ cat .buildpacks
-    https://github.com/shunjikonishi/heroku-buildpack-ffmpeg
-    https://github.com/heroku/heroku-buildpack-play
+    https://github.com/jbarreras/heroku-buildpack-ffmpeg
+    https://github.com/heroku/heroku-buildpack-scala
 
     $ heroku create --buildpack https://github.com/ddollar/heroku-buildpack-multi
 
     $ git push heroku master
-    ...
 
 You can verify installing ffmpeg by following command.
 
-    $ heroku run "ffmpeg -version"
+    $ heroku run -a APP "vendor/ffmpeg -version"
 
 Hacking
 -------
